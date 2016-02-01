@@ -1,0 +1,521 @@
+hadoop s3n://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY@reddit-comments/2009/RC_2009-09 distcp hdfs:///data/
+
+
+<property>
+  <name>fs.s3n.awsAccessKeyId</name>
+  <value>AKIAJPJEBL6BOU5NPQIQ</value>
+</property>
+
+<property>
+  <name>fs.s3n.awsSecretAccessKey</name>
+  <value>XvKEWW/Z6z4thytuKw2IXdxV1nIQSD17y1O+apkl</value>
+</property>
+
+hadoop distcp -Dfs.s3n.awsAccessKeyId=$AWS_ACCESS_KEY_ID -Dfs.s3n.awsSecretAccessKey="XvKEWW/Z6z4thytuKw2IXdxV1nIQSD17y1O+apkl" s3n://reddit-comments/2008/RC_2008-01 hdfs:///data/RC_2008-01
+
+
+$HADOOP_HOME/sbin/stop-dfs.sh
+
+http://stackoverflow.com/questions/28029134/how-can-i-access-s3-s3n-from-a-local-hadoop-2-6-installation
+
+START YARN 
+
+16/01/20 05:16:48 INFO mapreduce.Job: Task Id : attempt_1453266764977_0001_m_000000_0, Status : FAILED
+Error: java.io.IOException: No FileSystem for scheme: s3n
+
+
+Add to core-site.xml
+<property>
+  <name>fs.s3.impl</name>
+  <value>org.apache.hadoop.fs.s3.S3FileSystem</value>
+</property>
+
+<property>
+  <name>fs.s3n.impl</name>
+  <value>org.apache.hadoop.fs.s3native.NativeS3FileSystem</value>
+</property>
+
+
+******Add to /etc/hadoop/mapred-site.xml*****
+<property>
+  <!-- Add to the classpath used when running an M/R job -->
+  <name>mapreduce.application.classpath</name>
+  <value>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*,$HADOOP_MAPRED_HOME/share/hadoop/tools/lib/*</value>
+</property>
+
+
+-----
+
+Hive
+
+ADD JAR /usr/local/hive/hcatalog/share/hcatalog/hive-hcatalog-core-1.2.1.jar
+
+ADD JAR /home/ubuntu/Downloads/jsonserde.jar;
+
+***Try CREATE External to keep data in HDFS
+create external table table_name (
+  id int,
+  myfields string
+)
+location '/my/location/in/hdfs';
+
+
+CREATE TABLE reddit_json (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe';
+
+ROW FORMAT serde 'com.amazon.elasticmapreduce.JsonSerde'
+    with serdeproperties ('paths'='archived,author,author_flair_css_class,author_flair_text,body,controversiality,created_utc,distinguished,downs,edited,gilded,id,link_id,name,parent_id,removal_reason,retrieved_on,score,score_hidden,subreddit,subreddit_id,ups');
+
+
+LOAD DATA INPATH '/data/*.json' INTO TABLE reddit_json;
+
+SELECT * FROM reddit_json WHERE author = 'Arve';
+
+INSERT OVERWRITE LOCAL DIRECTORY '/home/ubuntu/hive-out' 
+ROW FORMAT DELIMITED 
+FIELDS TERMINATED BY ',' 
+SELECT * FROM reddit_json WHERE author = 'Arve';
+
+INSERT OVERWRITE LOCAL DIRECTORY '/home/ubuntu/hive-out' 
+ROW FORMAT DELIMITED 
+FIELDS TERMINATED BY ',' 
+SELECT COUNT(*) FROM reddit_json WHERE author = 'beautify';
+
+SELECT percentile(cast (score as BIGINT), 0.5) FROM reddit_json WHERE author = 'Arve'
+
+
+-----
+CREATE TABLE reddit_csv (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int,
+  created_utc_t            timestamp
+)
+STORED AS TEXTFILE;
+
+INSERT OVERWRITE TABLE reddit_csv select *, cast(cast(created_utc as double) as timestamp) as created_utc_t FROM reddit_json;
+
+
+-----
+SELECT count(*) FROM reddit_csv WHERE subreddit = 'funny';
+
+SELECT count(*) FROM reddit_csv WHERE author = 'beautify' GROUP BY subreddit
+
+---
+SELECT word, count FROM word_count
+ORDER BY count DESC limit 10;
+
+SELECT wc1.word, wc2.word, wc2.count
+FROM word_count wc1 JOIN word_count wc2
+ON(wc1.count = wc2.count)
+WHERE wc1.count > 5 AND wc1.word < wc2.word;
+
+---------
+LOAD DATA INPATH '/data/*.json' into TABLE reddit_json;
+
+SELECT AVG(*) FROM reddit_csv WHERE author = 'beautify'
+
+hadoop distcp s3n://reddit-comments/2010/RC_2010-11 hdfs:///data/RC_2010-11
+
+CREATE EXTERNAL TABLE reddit_json08 (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+ROW FORMAT
+    serde 'com.amazon.elasticmapreduce.JsonSerde'
+    with serdeproperties ('paths'='archived,author,author_flair_css_class,author_flair_text,body,controversiality,created_utc,distinguished,downs,edited,gilded,id,link_id,name,parent_id,removal_reason,retrieved_on,score,score_hidden,subreddit,subreddit_id,ups')
+LOCATION '/data/2008';
+
+***
+23143 JobHistoryServer
+22594 SecondaryNameNode
+22800 ResourceManager
+27503 Jps
+22355 NameNode
+25331 Master
+
+**
+
+wget http://elasticmapreduce.s3.amazonaws.com/samples/hive-ads/libs/jsonserde.jar -P /usr/local/hive/lib
+
+
+DOESN'T WORK WITH FILES.. MUST USE DIR
+
+*****
+CREATE TABLE reddit_seq08 (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int,
+  created_utc_t            timestamp
+)
+STORED AS SEQUENCEFILE;
+
+INSERT OVERWRITE TABLE reddit_csv08 select *, cast(cast(created_utc as double) as timestamp) as created_utc_t FROM reddit_json08;
+
+
+CREATE TABLE rnew_csv08 (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int,
+  created_utc_t            timestamp
+)
+STORED AS TEXTFILE;
+
+INSERT OVERWRITE TABLE rnew_csv08 select *, cast(cast(created_utc as double) as timestamp) as created_utc_t FROM reddit_json08;
+
+
+CREATE EXTERNAL TABLE reddit_json10 (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+ROW FORMAT
+    serde 'com.amazon.elasticmapreduce.JsonSerde'
+    with serdeproperties ('paths'='archived,author,author_flair_css_class,author_flair_text,body,controversiality,created_utc,distinguished,downs,edited,gilded,id,link_id,name,parent_id,removal_reason,retrieved_on,score,score_hidden,subreddit,subreddit_id,ups')
+LOCATION 'hdfs:///data/2010';
+
+CREATE TABLE rnew_seq10 (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int,
+  created_utc_t            timestamp
+)
+STORED AS SEQUENCEFILE;
+
+INSERT OVERWRITE TABLE rnew_SEQ10 select *, cast(cast(created_utc as double) as timestamp) as created_utc_t FROM reddit_json08;
+
+CREATE EXTERNAL TABLE r_s308 (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+ROW FORMAT 
+serde 'com.amazon.elasticmapreduce.JsonSerde'
+    with serdeproperties ('paths'='archived,author,author_flair_css_class,author_flair_text,body,controversiality,created_utc,distinguished,downs,edited,gilded,id,link_id,name,parent_id,removal_reason,retrieved_on,score,score_hidden,subreddit,subreddit_id,ups')
+LOCATION 's3n://reddit-comments/2010/';
+
+CREATE EXTERNAL TABLE r_exts3_2009 (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+ROW FORMAT 
+serde 'com.amazon.elasticmapreduce.JsonSerde'
+    with serdeproperties ('paths'='archived,author,author_flair_css_class,author_flair_text,body,controversiality,created_utc,distinguished,downs,edited,gilded,id,link_id,name,parent_id,removal_reason,retrieved_on,score,score_hidden,subreddit,subreddit_id,ups')
+LOCATION 's3n://reddit-comments/2009';
+
+CREATE EXTERNAL TABLE r_s3_2009parq (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/2009';
+
+INSERT OVERWRITE TABLE r_s3_2009parq select * FROM r_exts3_2009;
+
+Table default.r_s3_2009parq stats: [numFiles=0, numRows=18862834, totalSize=0, rawDataSize=414982348]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 38   Cumulative CPU: 1641.69 sec   HDFS Read: 298644 HDFS Write: 0 SUCCESS
+Total MapReduce CPU Time Spent: 27 minutes 21 seconds 690 msec
+OK
+Time taken: 857.337 seconds
+
+
+CREATE EXTERNAL TABLE r_s3_2008parqs (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/2008/RC_2008.parquet';
+
+*********DIRECTLY LINK TO PARQUET FROM SPARK*****
+CREATE EXTERNAL TABLE r_exts3_2008 (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+ROW FORMAT 
+serde 'com.amazon.elasticmapreduce.JsonSerde'
+    with serdeproperties ('paths'='archived,author,author_flair_css_class,author_flair_text,body,controversiality,created_utc,distinguished,downs,edited,gilded,id,link_id,name,parent_id,removal_reason,retrieved_on,score,score_hidden,subreddit,subreddit_id,ups')
+LOCATION 's3n://reddit-comments/2008';
+
+
+
+****
+CREATE EXTERNAL TABLE r_s3_2008parq (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/2008h';
+
+INSERT OVERWRITE TABLE r_s3_2008parq select * FROM r_exts3_2008;
+
+SET mapred.child.java.opts=-Xmx1G;  
+
+(Default is -Xmx200m) but 1G, 4G still crashing (exceeding virtual mem allowed)
+
+Error: Java heap space
+
+hive> SET mapred.child.java.opts=-Xmx1G;  
+
+hive> SELECT count(1) from r_s3_2008parq WHERE body like '%San Francisco%';
+
+
+
+

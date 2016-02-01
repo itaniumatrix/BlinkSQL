@@ -1,0 +1,58 @@
+**Pegasus Scala update script**
+chmod 775 install_env_scala210.sh
+
+
+**Spark setup for M4.large (8GB)**
+pyspark --master spark://~~:7077
+--executor-memory 6000M
+--driver-memory 6000M
+
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.databricks:spark-csv_2.10:1.1.0 --master spark://spark_master_hostname:7077 --executor-memory 6200M --driver-memory 6200M
+
+,com.amazonaws:aws-java-sdk-pom:1.10.34,org.apache.hadoop:hadoop-aws:2.6.0
+
+
+pyspark --master spark://ip-172-31-1-164:7077	
+
+dfr = sqlContext.read.json("s3n://reddit-comments/2009/RC_2009-10")
+
+dfr = sqlContext.read.json("s3n://reddit-comments/2009/RC_2009-10", StructType(fields)).persist(StorageLevel.MEMORY_AND_DISK_SER).registerTempTable("comments")
+
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.databricks:spark-csv_2.10:1.1.0 --master spark://ip-172-31-1-164:7077 --executor-memory 6200M --driver-memory 6200M
+
+%%%Local machine: ssh -N -f -L localhost:7776:localhost:7777 ubuntu@ec2-52-89-165-209.us-west-2.compute.amazonaws.com
+
+sc._jsc.hadoopConfiguration().set("fs.s3n.impl", "org.apache.hadoop.fs.s3native.NativeS3FileSystem")
+
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.amazonaws:aws-java-sdk-pom:1.10.34,org.apache.hadoop:hadoop-aws:2.6.0 --master spark://ip-172-31-1-164:7077 --executor-memory 6200M --driver-memory 6200M
+
+ssh -N -f -L localhost:7776:localhost:7777 ubuntu@ec2-52-89-159-133.us-west-2.compute.amazonaws.com
+
+
+***********On Original Kevin-DB cluster******
+
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.amazonaws:aws-java-sdk-pom:1.10.34,org.apache.hadoop:hadoop-aws:2.6.0 --master spark://ip-172-31-1-166:7077 --executor-memory 6200M --driver-memory 6200M
+
+ssh -N -f -L localhost:7776:localhost:7777 ubuntu@ec2-52-89-140-174.us-west-2.compute.amazonaws.com
+
+%pylab inline
+from pyspark.sql.types import *  
+
+rawDF = sqlContext.read.json("hdfs://ip-172-31-1-166:9000/hive/warehouse/reddit_json/*", StructType(fields))\
+                  .persist(StorageLevel.MEMORY_AND_DISK_SER)\
+                  .registerTempTable("comments")
+
+
+
+countCtx = sqlContext.sql("""
+    SELECT COUNT(1)
+    FROM comments
+    """)
+
+*** on M4-xLarges (
+change spark-env.sh NumCores --> 12
+
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.amazonaws:aws-java-sdk-pom:1.10.34,org.apache.hadoop:hadoop-aws:2.7.1 --master spark://ip-172-31-1-166:7077 --executor-memory 12G --driver-memory 12G
+
+
+
