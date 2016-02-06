@@ -52,7 +52,29 @@ countCtx = sqlContext.sql("""
 *** on M4-xLarges (
 change spark-env.sh NumCores --> 12
 
-PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.amazonaws:aws-java-sdk-pom:1.10.34,org.apache.hadoop:hadoop-aws:2.7.1 --master spark://ip-172-31-1-166:7077 --executor-memory 12G --driver-memory 12G
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.amazonaws:aws-java-sdk-pom:1.10.34,org.apache.hadoop:hadoop-aws:2.7.1 --master spark://ip-172-31-1-166:7077 --executor-memory 13G --driver-memory 13G
+
+Tunnel to m4large
+
+sudo -u hdfs hadoop fs -chmod 777 /user/spark
+sudo -u spark hadoop fs -chmod 777 /user/spark/applicationHistory
+
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.amazonaws:aws-java-sdk-pom:1.10.34,org.apache.hadoop:hadoop-aws:2.7.1,com.databricks:spark-csv_2.10:1.1.0 --master spark://ip-172-31-1-166:7077 --executor-memory 13G --driver-memory 13G
+
+
+****M4 nodes*****
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.databricks:spark-csv_2.10:1.1.0 --master spark://ip-172-31-1-164:7077 --executor-memory 13G --driver-memory 13G
+
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.amazonaws:aws-java-sdk-pom:1.10.34 --master spark://ip-172-31-1-164:7077 --executor-memory 13G --driver-memory 13G
+
+ssh -N -f -L localhost:7778:localhost:7777 ubuntu@ec2-52-89-159-133.us-west-2.compute.amazonaws.com
+
+*** Find AWS bucket size***
+aws s3 ls s3://kevin-de2016a/Parquet/2007/ --recursive | grep -v -E "(Bucket: |Prefix: |LastWriteTime|$|--)" | awk 'BEGIN {total=0}{total+=$3}END{print total/1024/1024" MB"}'
+aws s3 ls s3://kevin-de2016a/Parquet/2007/ --recursive | awk 'BEGIN {total=0}{total+=$3}END{print total/1024/1024" MB"}'
+
+##Get num files
+./aws s3 ls s3://kevin-de2016a/Parquet/Final/year=2012 --recursive | wc -l
 
 
 

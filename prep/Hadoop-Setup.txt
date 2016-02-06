@@ -516,6 +516,178 @@ hive> SET mapred.child.java.opts=-Xmx1G;
 
 hive> SELECT count(1) from r_s3_2008parq WHERE body like '%San Francisco%';
 
+****
+Feb 1****
+CREATE EXTERNAL TABLE rs3_2011p (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/2011/RC_2011.parquet';
+
+
+CREATE EXTERNAL TABLE r_s3_2007old (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/2007like';
+
+INSERT OVERWRITE TABLE r_s3_2008parq select * FROM r_exts3_2007;
+
+CREATE EXTERNAL TABLE s3_2010 (
+ author     string,
+ body       string,
+ controversiality  bigint,
+ distinguished     string,
+ timestamp_utc     timestamp,
+ edited     string,
+ gilded     bigint,
+ link_id    string,
+ name       string,
+ parent_id  string,
+ score      bigint,
+ subreddit  string,
+ subreddit_id  string,
+ ups        bigint,
+ year       int,
+ month      int
+)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/TimeAll/year=2010';
+
+CREATE EXTERNAL TABLE s3_2012 (
+ author     string,
+ body       string,
+ controversiality  bigint,
+ distinguished     string,
+ timestamp_utc     timestamp,
+ edited     string,
+ gilded     bigint,
+ link_id    string,
+ name       string,
+ parent_id  string,
+ score      bigint,
+ subreddit  string,
+ subreddit_id  string,
+ ups        bigint,
+ year       int,
+ month      int
+)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/TimeAll/year=2012';
+
+
+CREATE EXTERNAL TABLE r_s3_2010old (
+  archived                 boolean,
+  author                   string,
+  author_flair_css_class   string,
+  author_flair_text        string,
+  body                     string,
+  controversiality         int,
+  created_utc              string,
+  distinguished            string,
+  downs                    int,
+  edited                   boolean,
+  gilded                   int,
+  id                       string,
+  link_id                  string,
+  name                     string,
+  parent_id                string,
+  removal_reason           string,
+  retrieved_on             timestamp,
+  score                    int,
+  score_hidden             boolean,
+  subreddit                string,
+  subreddit_id             string,
+  ups                      int
+)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/2010/RC_2010.parquet';
+
+***Table for Hive - new converted Parquet by Spark***
+CREATE EXTERNAL TABLE s3_2010 (
+ author     string,
+ body       string,
+ controversiality  bigint,
+ distinguished     string,
+ timestamp_utc     timestamp,
+ edited     string,
+ gilded     bigint,
+ link_id    string,
+ name       string,
+ parent_id  string,
+ score      bigint,
+ subreddit  string,
+ subreddit_id  string,
+ ups        bigint
+)
+PARTITIONED BY(year int, month int)	
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/Partition/';
+
+
+	CREATE EXTERNAL TABLE s3_2012 (
+	 author     string,
+	 body       string,
+	 controversiality  bigint,
+	 distinguished     string,
+	 timestamp_utc     timestamp,
+	 edited     string,
+	 gilded     bigint,
+	 link_id    string,
+	 name       string,
+	 parent_id  string,
+	 score      bigint,
+	 subreddit  string,
+	 subreddit_id  string,
+	 ups        bigint
+	)
+	PARTITIONED BY(year int, month int)
+	STORED AS PARQUET
+	LOCATION 's3n://kevin-de2016a/Parquet/TimeF/';
+
+SELECT author, count(1) as numPosts from s3_2012 GROUP BY author ORDER BY numPosts desc limit 10;
 
 
 
