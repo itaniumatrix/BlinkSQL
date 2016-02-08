@@ -689,5 +689,122 @@ LOCATION 's3n://kevin-de2016a/Parquet/Partition/';
 
 SELECT author, count(1) as numPosts from s3_2012 GROUP BY author ORDER BY numPosts desc limit 10;
 
+CREATE EXTERNAL TABLE s3_f2010 (
+ author     string,
+ body       string,
+ controversiality  bigint,
+ distinguished     string,
+ timestamp_utc     timestamp,
+ edited     string,
+ gilded     bigint,
+ link_id    string,
+ name       string,
+ parent_id  string,
+ score      bigint,
+ subreddit  string,
+ subreddit_id  string,
+ ups        bigint
+)
+PARTITIONED BY(year int, month int)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/f12/';
+
+msck repair table s3_f2010;
+
+CREATE EXTERNAL TABLE s3_2010p64 (
+ author     string,
+ body       string,
+ controversiality  bigint,
+ distinguished     string,
+ timestamp_utc     timestamp,
+ edited     string,
+ gilded     bigint,
+ link_id    string,
+ name       string,
+ parent_id  string,
+ score      bigint,
+ subreddit  string,
+ subreddit_id  string,
+ ups        bigint
+)
+PARTITIONED BY(year int, month int)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/Part_64/';
+
+CREATE EXTERNAL TABLE s3_f2010_p10 (
+ author     string,
+ body       string,
+ controversiality  bigint,
+ distinguished     string,
+ timestamp_utc     timestamp,
+ edited     string,
+ gilded     bigint,
+ link_id    string,
+ name       string,
+ parent_id  string,
+ score      bigint,
+ subreddit  string,
+ subreddit_id  string,
+ ups        bigint
+)
+PARTITIONED BY(year int, month int)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/f10/';
+
+CREATE EXTERNAL TABLE s3_f2014_m12 (
+ author     string,
+ body       string,
+ controversiality  bigint,
+ distinguished     string,
+ timestamp_utc     timestamp,
+ edited     string,
+ gilded     bigint,
+ link_id    string,
+ name       string,
+ parent_id  string,
+ score      bigint,
+ subreddit  string,
+ subreddit_id  string,
+ ups        bigint
+)
+PARTITIONED BY(year int, month int)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/f14-06/';
+
+MSCK REPAIR TABLE xx;
+
+
+CREATE EXTERNAL TABLE f07 (
+ author     string,
+ body       string,
+ controversiality  bigint,
+ distinguished     string,
+ timestamp_utc     timestamp,
+ edited     string,
+ gilded     bigint,
+ link_id    string,
+ name       string,
+ parent_id  string,
+ score      bigint,
+ subreddit  string,
+ subreddit_id  string,
+ ups        bigint
+)
+PARTITIONED BY(year int, month int)
+STORED AS PARQUET
+LOCATION 's3n://kevin-de2016a/Parquet/f07/';
+
+CREATE TABLE f14 like f07;
+ALTER TABLE f14 SET LOCATION 's3n://kevin-de2016a/Parquet/f14/';
+
+CREATE TABLE f15 like f07;
+ALTER TABLE f15 SET LOCATION 's3n://kevin-de2016a/Parquet/f15/';
+MSCK REPAIR TABLE f15
+
+CREATE TABLE f12 like f07;
+ALTER TABLE f12 SET LOCATION 's3n://kevin-de2016a/Parquet/f12/';
+MSCK REPAIR TABLE f15
+
+
 
 
