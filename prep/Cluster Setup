@@ -80,3 +80,16 @@ aws s3 ls s3://kevin-de2016a/Parquet/f15/ --recursive | awk 'BEGIN {total=0}{tot
 		
 
 aws s3 ls s3://kevin-de2016a/Parquet/f12/ --recursive | awk 'BEGIN {total=0}{total+=$3}END{print total/1024/1024" MB"}'
+
+ssh -N -f -L localhost:7779:localhost:7778 ubuntu@ec2-52-89-159-133.us-west-2.compute.amazonaws.com
+
+ipython notebook --no-browser --port=7777
+
+
+
+*****Kev 2 node****
+PYSPARK_DRIVER_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" pyspark --packages com.amazonaws:aws-java-sdk-pom:1.10.34 --master spark://ip-172-31-1-180:7077 --executor-memory 13G --driver-memory 13G
+
+ssh -N -f -L localhost:7780:localhost:7777 ubuntu@ec2-52-36-49-250.us-west-2.compute.amazonaws.com
+
+

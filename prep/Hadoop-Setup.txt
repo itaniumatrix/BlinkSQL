@@ -779,7 +779,7 @@ CREATE EXTERNAL TABLE f07 (
  body       string,
  controversiality  bigint,
  distinguished     string,
- timestamp_utc     timestamp,
+ timestamp_utc     timestamp,	
  edited     string,
  gilded     bigint,
  link_id    string,
@@ -806,5 +806,7 @@ ALTER TABLE f12 SET LOCATION 's3n://kevin-de2016a/Parquet/f12/';
 MSCK REPAIR TABLE f15
 
 
+
+SELECT author, avg(score) as avgScore from f12 GROUP BY author ORDER BY avgScore desc limit 10
 
 
