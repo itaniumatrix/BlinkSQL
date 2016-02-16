@@ -7,7 +7,7 @@ Provides timings for basic SQL queries (aggregations, filters) and a self-join o
 * Python 2.7
 * Java 8 (for Presto)
 
-Tested with:
+Tested with:  
 Presto 0.136  
 Spark 1.5.2 
 Drill 1.4  
