@@ -809,4 +809,18 @@ MSCK REPAIR TABLE f15
 
 SELECT author, avg(score) as avgScore from f12 GROUP BY author ORDER BY avgScore desc limit 10
 
+-----
+Hive
+For allowing %filter% on 2009parq file, fix Java Heap error:	
+set mapred.map.child.java.opts=-Xmx1024m;
+set mapred.reduce.child.java.opts=-Xmx1024m;
+AND
+set mapreduce.reduce.memory.mb=5120;
+set mapreduce.map.memory.mb=4096;
+set mapred.map.child.java.opts=-Xmx1024m;
+set mapred.reduce.child.java.opts=-Xmx1024m;
+
+
+
+
 

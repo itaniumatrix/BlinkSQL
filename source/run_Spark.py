@@ -60,3 +60,50 @@ def appendResultToFile(filename, startTime, queryID, year, timeTaken, result):
     with open(filename, "a") as myfile:
         myfile.write(outString)
     print(outString)
+
+
+#Runs (approx) Count Distinct on Authors, given approxTrue boolean
+def runApproxQuery(dbPath, approxTrue):
+    df = sqlContext.read.parquet(dbPath)
+    t0 = time.time()
+    #Edit df.subreddit to use other fields
+    if (approxTrue):
+        result = df.agg(approxCountDistinct(df.subreddit)).collect()
+    else: result = df.agg(countDistinct(df.subreddit)).collect()
+    delta_t = time.time() - t0
+    return (str(result[0]), t0, delta_t)
+
+for year in [2007, 2009, 2012]:
+    path = getDataLocation(year)
+    #4 queries right now
+    for queryID in range(1,6):
+        #Repeat 2 times
+        for i in range(1,5):
+            queryString = mapQuery[queryID]
+            result, t0, time_taken = runTimeQuery(path, queryString)
+            appendResultToFile("queries.txt", t0, queryID, year, time_taken, result)
+    
+    #Run Count/ApproxCount
+    for approxTrue in [0,1]:
+        #Repeat 2 times
+        for i in range(1,5):
+            result, t0, time_taken = runApproxQuery(path, approxTrue)
+            appendResultToFile("queries.txt", t0, "C" + str(approxTrue), year, time_taken, result)
+
+"""Calling querying functions over range of years"""
+for i in range(1,3):
+    for year in [2014, 2015]:
+        path = getDataLocation(year)
+    #4 queries right now
+        for queryID in range(1,5):
+            #Repeat 2 times
+            queryString = mapQuery[queryID]
+            result, t0, time_taken = runTimeQuery(path, queryString)
+            appendResultToFile("queries.txt", t0, queryID, year, time_taken, result)
+
+        #Run Count/ApproxCount
+        for approxTrue in [0,1]:
+            #Repeat 2 times
+            for i in range(1,4):
+                result, t0, time_taken = runApproxQuery(path, approxTrue)
+                appendResultToFile("queries.txt", t0, "C" + str(approxTrue), year, time_taken, result)
