@@ -9,6 +9,6 @@ Provides timings for basic SQL queries (aggregations, filters) and a self-join o
 
 Tested with:  
 Presto 0.136  
-Spark 1.5.2 
+Spark 1.5.2  
 Drill 1.4  
 (and Hive 1.2.1 for the smallest queries up to 5 GB)
