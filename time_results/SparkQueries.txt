@@ -1,0 +1,219 @@
+2016-02-09,09:02:56,C0,2007,3.05,Row(COUNT(DISTINCT subreddit)=43),Spark6
+2016-02-09,09:02:58,C1,2007,1.35,Row(APPROXIMATE COUNT(DISTINCT subreddit)=43),Spark6
+2016-02-09,09:48:37,1,2007,1.05,Row(numPosts=886802),Spark10
+2016-02-09,09:48:39,1,2007,1.13,Row(numPosts=886802),Spark10
+2016-02-09,09:48:40,1,2007,0.65,Row(numPosts=886802),Spark10
+2016-02-09,09:48:41,1,2007,0.58,Row(numPosts=886802),Spark10
+2016-02-09,09:48:43,2,2007,1.56,Row(author=u'tempuser', avgScore=851.0),Spark10
+2016-02-09,09:48:44,2,2007,1.10,Row(author=u'tempuser', avgScore=851.0),Spark10
+2016-02-09,09:48:45,2,2007,1.08,Row(author=u'tempuser', avgScore=851.0),Spark10
+2016-02-09,09:48:47,2,2007,1.02,Row(author=u'tempuser', avgScore=851.0),Spark10
+2016-02-09,09:48:48,3,2007,0.90,Row(_c0=285),Spark10
+2016-02-09,09:48:49,3,2007,0.86,Row(_c0=285),Spark10
+2016-02-09,09:48:50,3,2007,0.92,Row(_c0=285),Spark10
+2016-02-09,09:48:52,3,2007,0.91,Row(_c0=285),Spark10
+2016-02-09,09:48:55,4,2007,2.47,Null,Spark10
+2016-02-09,09:48:57,4,2007,2.45,Null,Spark10
+2016-02-09,09:49:00,4,2007,1.82,Null,Spark10
+2016-02-09,09:49:01,4,2007,1.58,Null,Spark10
+2016-02-09,09:51:04,1,2007,0.69,Row(numPosts=886802),Spark10
+2016-02-09,09:51:05,2,2007,0.97,Row(author=u'tempuser', avgScore=851.0),Spark10
+2016-02-09,09:51:06,3,2007,0.89,Row(_c0=285),Spark10
+2016-02-09,09:51:09,4,2007,2.25,Null,Spark10
+2016-02-09,09:51:27,1,2007,0.67,Row(numPosts=886802),Spark10
+2016-02-09,09:51:28,2,2007,1.45,Row(author=u'tempuser', avgScore=851.0),Spark10
+2016-02-09,09:51:30,3,2007,0.97,Row(_c0=285),Spark10
+2016-02-09,09:51:32,4,2007,1.64,Null,Spark10
+2016-02-09,09:51:33,5,2007,1.23,Null,Spark10
+2016-02-09,09:51:34,C0,2007,0.93,Row(COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:51:35,C0,2007,0.54,Row(COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:51:36,C0,2007,0.88,Row(COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:51:37,C0,2007,0.52,Row(COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:51:38,C1,2007,0.54,Row(APPROXIMATE COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:51:39,C1,2007,0.55,Row(APPROXIMATE COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:51:40,C1,2007,0.59,Row(APPROXIMATE COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:51:40,C1,2007,0.58,Row(APPROXIMATE COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:59:13,1,2007,0.67,Row(numPosts=886802),Spark10
+2016-02-09,09:59:14,1,2007,0.42,Row(numPosts=886802),Spark10
+2016-02-09,09:59:15,1,2007,0.52,Row(numPosts=886802),Spark10
+2016-02-09,09:59:17,1,2007,1.48,Row(numPosts=886802),Spark10
+2016-02-09,09:59:18,2,2007,1.28,Row(author=u'tempuser', avgScore=851.0),Spark10
+2016-02-09,09:59:20,2,2007,0.94,Row(author=u'tempuser', avgScore=851.0),Spark10
+2016-02-09,09:59:21,2,2007,0.80,Row(author=u'tempuser', avgScore=851.0),Spark10
+2016-02-09,09:59:22,2,2007,0.84,Row(author=u'tempuser', avgScore=851.0),Spark10
+2016-02-09,09:59:23,3,2007,0.82,Row(_c0=285),Spark10
+2016-02-09,09:59:24,3,2007,0.79,Row(_c0=285),Spark10
+2016-02-09,09:59:25,3,2007,0.77,Row(_c0=285),Spark10
+2016-02-09,09:59:26,3,2007,0.89,Row(_c0=285),Spark10
+2016-02-09,09:59:28,4,2007,1.54,Null,Spark10
+2016-02-09,09:59:30,4,2007,1.20,Null,Spark10
+2016-02-09,09:59:32,4,2007,1.37,Null,Spark10
+2016-02-09,09:59:34,4,2007,1.76,Null,Spark10
+2016-02-09,09:59:36,5,2007,1.84,Null,Spark10
+2016-02-09,09:59:37,5,2007,1.03,Null,Spark10
+2016-02-09,09:59:39,5,2007,1.13,Null,Spark10
+2016-02-09,09:59:40,5,2007,0.97,Null,Spark10
+2016-02-09,09:59:41,C0,2007,0.47,Row(COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:59:41,C0,2007,0.54,Row(COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:59:42,C0,2007,0.50,Row(COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:59:43,C0,2007,0.49,Row(COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:59:44,C1,2007,0.64,Row(APPROXIMATE COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:59:45,C1,2007,0.49,Row(APPROXIMATE COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:59:46,C1,2007,0.54,Row(APPROXIMATE COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:59:47,C1,2007,0.59,Row(APPROXIMATE COUNT(DISTINCT subreddit)=43),Spark10
+2016-02-09,09:59:53,1,2009,5.33,Row(numPosts=26992507),Spark10
+2016-02-09,09:59:59,1,2009,5.32,Row(numPosts=26992507),Spark10
+2016-02-09,10:00:08,1,2009,7.67,Row(numPosts=26992507),Spark10
+2016-02-09,10:00:15,1,2009,5.27,Row(numPosts=26992507),Spark10
+2016-02-09,10:00:25,2,2009,8.58,Row(author=u'_Os_', avgScore=1355.0),Spark10
+2016-02-09,10:00:35,2,2009,9.34,Row(author=u'_Os_', avgScore=1355.0),Spark10
+2016-02-09,10:00:45,2,2009,8.29,Row(author=u'_Os_', avgScore=1355.0),Spark10
+2016-02-09,10:00:54,2,2009,8.48,Row(author=u'_Os_', avgScore=1355.0),Spark10
+2016-02-09,10:01:04,3,2009,8.90,Row(_c0=7726),Spark10
+2016-02-09,10:01:14,3,2009,8.25,Row(_c0=7726),Spark10
+2016-02-09,10:01:23,3,2009,8.46,Row(_c0=7726),Spark10
+2016-02-09,10:01:33,3,2009,8.09,Row(_c0=7726),Spark10
+2016-02-09,10:01:52,4,2009,17.85,Row(author=u'tomjihad', parent_id=u't3_9vm8l', score=1008, author=u'[deleted]', parent_id=u't1_c0enp5o', subreddit=u'funny', name=u't1_c0enqj4', score=2865, link_id=u't3_9vm8l'),Spark10
+2016-02-09,10:02:10,4,2009,17.08,Row(author=u'tomjihad', parent_id=u't3_9vm8l', score=1008, author=u'[deleted]', parent_id=u't1_c0enp5o', subreddit=u'funny', name=u't1_c0enqj4', score=2865, link_id=u't3_9vm8l'),Spark10
+2016-02-09,10:02:30,4,2009,18.38,Row(author=u'tomjihad', parent_id=u't3_9vm8l', score=1008, author=u'[deleted]', parent_id=u't1_c0enp5o', subreddit=u'funny', name=u't1_c0enqj4', score=2865, link_id=u't3_9vm8l'),Spark10
+2016-02-09,10:02:48,4,2009,17.16,Row(author=u'tomjihad', parent_id=u't3_9vm8l', score=1008, author=u'[deleted]', parent_id=u't1_c0enp5o', subreddit=u'funny', name=u't1_c0enqj4', score=2865, link_id=u't3_9vm8l'),Spark10
+2016-02-09,10:03:03,5,2009,13.51,Row(score=1008, parent_id=u't1_c0enp5o', subreddit=u'funny', score=2865, link_id=u't3_9vm8l'),Spark10
+2016-02-09,10:03:17,5,2009,13.29,Row(score=1008, parent_id=u't1_c0enp5o', subreddit=u'funny', score=2865, link_id=u't3_9vm8l'),Spark10
+2016-02-09,10:03:32,5,2009,13.85,Row(score=1008, parent_id=u't1_c0enp5o', subreddit=u'funny', score=2865, link_id=u't3_9vm8l'),Spark10
+2016-02-09,10:03:46,5,2009,12.89,Row(score=1008, parent_id=u't1_c0enp5o', subreddit=u'funny', score=2865, link_id=u't3_9vm8l'),Spark10
+2016-02-09,10:03:53,C0,2009,5.60,Row(COUNT(DISTINCT subreddit)=7417),Spark10
+2016-02-09,10:03:59,C0,2009,5.45,Row(COUNT(DISTINCT subreddit)=7417),Spark10
+2016-02-09,10:04:06,C0,2009,6.00,Row(COUNT(DISTINCT subreddit)=7417),Spark10
+2016-02-09,10:04:13,C0,2009,6.05,Row(COUNT(DISTINCT subreddit)=7417),Spark10
+2016-02-09,10:04:20,C1,2009,5.44,Row(APPROXIMATE COUNT(DISTINCT subreddit)=6933),Spark10
+2016-02-09,10:04:26,C1,2009,5.59,Row(APPROXIMATE COUNT(DISTINCT subreddit)=6933),Spark10
+2016-02-09,10:04:33,C1,2009,5.80,Row(APPROXIMATE COUNT(DISTINCT subreddit)=6933),Spark10
+2016-02-09,10:04:40,C1,2009,5.49,Row(APPROXIMATE COUNT(DISTINCT subreddit)=6933),Spark10
+2016-02-09,10:07:42,1,2012,181.69,Row(numPosts=432084556),Spark10
+2016-02-09,10:09:10,1,2012,86.64,Row(numPosts=432084556),Spark10
+2016-02-09,10:12:18,1,2012,187.44,Row(numPosts=432084556),Spark10
+2016-02-09,10:15:41,1,2012,201.60,Row(numPosts=432084556),Spark10
+2016-02-09,10:18:07,2,2012,145.18,Row(author=u'ThrownAway2389', avgScore=14097.0),Spark10
+2016-02-09,10:20:28,2,2012,139.46,Row(author=u'ThrownAway2389', avgScore=14097.0),Spark10
+2016-02-09,10:22:50,2,2012,140.45,Row(author=u'ThrownAway2389', avgScore=14097.0),Spark10
+2016-02-09,10:25:10,2,2012,139.03,Row(author=u'ThrownAway2389', avgScore=14097.0),Spark10
+2016-02-09,10:27:21,3,2012,130.72,Row(_c0=91979),Spark10
+2016-02-09,10:30:38,3,2012,196.36,Row(_c0=91979),Spark10
+2016-02-09,10:34:10,3,2012,210.51,Row(_c0=91979),Spark10
+2016-02-09,10:36:23,3,2012,131.78,Row(_c0=91979),Spark10
+2016-02-09,10:42:01,4,2012,337.88,Row(author=u'untouchable_face', parent_id=u't3_14cb0c', score=6724, author=u'Here_Comes_The_King', parent_id=u't1_c7bxi2z', subreddit=u'IAmA', name=u't1_c7bxmfe', score=11670, link_id=u't3_14cb0c'),Spark10
+2016-02-09,10:49:35,4,2012,452.79,Row(author=u'untouchable_face', parent_id=u't3_14cb0c', score=6724, author=u'Here_Comes_The_King', parent_id=u't1_c7bxi2z', subreddit=u'IAmA', name=u't1_c7bxmfe', score=11670, link_id=u't3_14cb0c'),Spark10
+2016-02-09,11:02:45,4,2012,788.65,Row(author=u'untouchable_face', parent_id=u't3_14cb0c', score=6724, author=u'Here_Comes_The_King', parent_id=u't1_c7bxi2z', subreddit=u'IAmA', name=u't1_c7bxmfe', score=11670, link_id=u't3_14cb0c'),Spark10
+2016-02-09,11:13:06,4,2012,620.06,Row(author=u'untouchable_face', parent_id=u't3_14cb0c', score=6724, author=u'Here_Comes_The_King', parent_id=u't1_c7bxi2z', subreddit=u'IAmA', name=u't1_c7bxmfe', score=11670, link_id=u't3_14cb0c'),Spark10
+2016-02-09,11:20:24,5,2012,437.27,Row(score=6724, parent_id=u't1_c7bxi2z', subreddit=u'IAmA', score=11670, link_id=u't3_14cb0c'),Spark10
+2016-02-09,11:27:49,5,2012,443.78,Row(score=6724, parent_id=u't1_c7bxi2z', subreddit=u'IAmA', score=11670, link_id=u't3_14cb0c'),Spark10
+2016-02-09,11:35:06,5,2012,434.80,Row(score=6724, parent_id=u't1_c7bxi2z', subreddit=u'IAmA', score=11670, link_id=u't3_14cb0c'),Spark10
+2016-02-09,11:44:25,5,2012,557.87,Row(score=6724, parent_id=u't1_c7bxi2z', subreddit=u'IAmA', score=11670, link_id=u't3_14cb0c'),Spark10
+2016-02-09,11:46:05,C0,2012,99.35,Row(COUNT(DISTINCT subreddit)=72632),Spark10
+2016-02-09,11:47:38,C0,2012,91.55,Row(COUNT(DISTINCT subreddit)=72632),Spark10
+2016-02-09,11:49:10,C0,2012,90.86,Row(COUNT(DISTINCT subreddit)=72632),Spark10
+2016-02-09,11:50:41,C0,2012,90.49,Row(COUNT(DISTINCT subreddit)=72632),Spark10
+2016-02-09,11:52:10,C1,2012,88.73,Row(APPROXIMATE COUNT(DISTINCT subreddit)=65609),Spark10
+2016-02-09,11:53:40,C1,2012,89.08,Row(APPROXIMATE COUNT(DISTINCT subreddit)=65609),Spark10
+2016-02-09,11:55:12,C1,2012,90.30,Row(APPROXIMATE COUNT(DISTINCT subreddit)=65609),Spark10
+2016-02-09,11:56:43,C1,2012,89.48,Row(APPROXIMATE COUNT(DISTINCT subreddit)=65609),Spark10
+2016-02-09,11:58:35,1,2014,111.28,Row(numPosts=531804658),Spark10
+2016-02-09,12:02:31,2,2014,234.51,Row(author=u'ternative', avgScore=4751.0),Spark10
+2016-02-09,12:05:16,3,2014,163.34,Row(_c0=99321),Spark10
+2016-02-09,12:25:39,4,2014,1222.61,Row(author=u'LordLior', parent_id=u't3_2np694', score=4935, author=u'DO_U_EVN_SPAGHETTI', parent_id=u't1_cmfpwqm', subreddit=u'AskReddit', name=u't1_cmfsbrr', score=26143, link_id=u't3_2np694'),Spark10
+2016-02-09,12:27:39,C0,2014,117.83,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,12:29:39,C0,2014,118.39,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,12:33:24,C0,2014,223.55,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,12:35:17,C1,2014,111.70,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,12:37:11,C1,2014,112.49,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,12:39:05,C1,2014,113.07,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,12:41:29,1,2015,142.80,Row(numPosts=668424825),Spark10
+2016-02-09,12:46:08,2,2015,277.58,Row(author=u'Caelebi', avgScore=8040.0),Spark10
+2016-02-09,12:49:41,3,2015,210.95,Row(_c0=119656),Spark10
+2016-02-09,13:20:06,4,2015,1823.89,Row(author=u'jstrydor', parent_id=u't3_2x9zvi', score=7699, author=u'OmniKai', parent_id=u't1_coyaibj', subreddit=u'pics', name=u't1_coyb50i', score=9276, link_id=u't3_2x9zvi'),Spark10
+2016-02-09,13:22:42,C0,2015,154.76,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,13:25:18,C0,2015,154.49,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,13:27:55,C0,2015,154.82,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,13:30:22,C1,2015,145.66,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,13:32:51,C1,2015,147.59,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,13:35:17,C1,2015,145.26,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,13:37:09,1,2014,109.32,Row(numPosts=531804658),Spark10
+2016-02-09,13:41:06,2,2014,235.78,Row(author=u'ternative', avgScore=4751.0),Spark10
+2016-02-09,13:43:50,3,2014,162.54,Row(_c0=99321),Spark10
+2016-02-09,14:13:06,4,2014,1750.78,Row(author=u'LordLior', parent_id=u't3_2np694', score=4935, author=u'DO_U_EVN_SPAGHETTI', parent_id=u't1_cmfpwqm', subreddit=u'AskReddit', name=u't1_cmfsbrr', score=26143, link_id=u't3_2np694'),Spark10
+2016-02-09,14:15:06,C0,2014,118.07,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,14:17:06,C0,2014,118.91,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,14:19:10,C0,2014,123.00,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,14:21:04,C1,2014,111.93,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,14:22:57,C1,2014,112.27,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,14:24:51,C1,2014,112.29,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,14:27:15,1,2015,143.15,Row(numPosts=668424825),Spark10
+2016-02-09,14:32:04,2,2015,287.39,Row(author=u'Caelebi', avgScore=8040.0),Spark10
+2016-02-09,14:35:37,3,2015,211.25,Row(_c0=119656),Spark10
+2016-02-09,15:16:07,4,2015,2428.86,Row(author=u'jstrydor', parent_id=u't3_2x9zvi', score=7699, author=u'OmniKai', parent_id=u't1_coyaibj', subreddit=u'pics', name=u't1_coyb50i', score=9276, link_id=u't3_2x9zvi'),Spark10
+2016-02-09,15:18:44,C0,2015,154.83,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,15:23:19,C0,2015,274.34,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,15:25:55,C0,2015,154.95,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,15:28:24,C1,2015,147.22,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,15:30:51,C1,2015,145.56,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,15:33:19,C1,2015,146.29,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,17:51:14,1,2014,109.08,Row(numPosts=531804658),Spark10
+2016-02-09,17:55:06,2,2014,230.33,Row(author=u'ternative', avgScore=4751.0),Spark10
+2016-02-09,17:57:50,3,2014,162.58,Row(_c0=99321),Spark10
+2016-02-09,18:21:36,4,2014,1425.33,Row(author=u'LordLior', parent_id=u't3_2np694', score=4935, author=u'DO_U_EVN_SPAGHETTI', parent_id=u't1_cmfpwqm', subreddit=u'AskReddit', name=u't1_cmfsbrr', score=26143, link_id=u't3_2np694'),Spark10
+2016-02-09,18:23:36,C0,2014,118.22,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,18:25:36,C0,2014,118.96,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,18:27:36,C0,2014,118.07,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,18:29:29,C1,2014,111.36,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,18:31:24,C1,2014,113.42,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,18:33:17,C1,2014,111.81,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,18:35:41,1,2015,143.21,Row(numPosts=668424825),Spark10
+2016-02-09,18:43:00,2,2015,436.75,Row(author=u'Caelebi', avgScore=8040.0),Spark10
+2016-02-09,18:46:32,3,2015,210.77,Row(_c0=119656),Spark10
+2016-02-09,19:50:41,4,2015,3847.88,Row(author=u'jstrydor', parent_id=u't3_2x9zvi', score=7699, author=u'OmniKai', parent_id=u't1_coyaibj', subreddit=u'pics', name=u't1_coyb50i', score=9276, link_id=u't3_2x9zvi'),Spark10
+2016-02-09,19:53:18,C0,2015,155.14,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,19:55:55,C0,2015,155.40,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,19:58:32,C0,2015,155.71,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,20:01:00,C1,2015,146.09,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,20:03:28,C1,2015,145.77,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,20:05:56,C1,2015,146.51,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,20:09:45,1,2014,228.73,Row(numPosts=531804658),Spark10
+2016-02-09,20:12:44,2,2014,177.80,Row(author=u'ternative', avgScore=4751.0),Spark10
+2016-02-09,20:15:29,3,2014,162.66,Row(_c0=99321),Spark10
+2016-02-09,20:27:57,4,2014,747.24,Row(author=u'LordLior', parent_id=u't3_2np694', score=4935, author=u'DO_U_EVN_SPAGHETTI', parent_id=u't1_cmfpwqm', subreddit=u'AskReddit', name=u't1_cmfsbrr', score=26143, link_id=u't3_2np694'),Spark10
+2016-02-09,20:29:57,C0,2014,118.14,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,20:31:55,C0,2014,117.58,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,20:33:54,C0,2014,117.68,Row(COUNT(DISTINCT subreddit)=126795),Spark10
+2016-02-09,20:35:48,C1,2014,111.78,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,20:37:43,C1,2014,114.29,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,20:40:44,C1,2014,179.58,Row(APPROXIMATE COUNT(DISTINCT subreddit)=130148),Spark10
+2016-02-09,20:43:08,1,2015,142.30,Row(numPosts=668424825),Spark10
+2016-02-09,20:49:11,2,2015,361.87,Row(author=u'Caelebi', avgScore=8040.0),Spark10
+2016-02-09,20:52:44,3,2015,211.25,Row(_c0=119656),Spark10
+2016-02-09,21:16:52,4,2015,1447.27,Row(author=u'jstrydor', parent_id=u't3_2x9zvi', score=7699, author=u'OmniKai', parent_id=u't1_coyaibj', subreddit=u'pics', name=u't1_coyb50i', score=9276, link_id=u't3_2x9zvi'),Spark10
+2016-02-09,21:19:28,C0,2015,154.05,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,21:22:08,C0,2015,158.33,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,21:24:52,C0,2015,162.96,Row(COUNT(DISTINCT subreddit)=205620),Spark10
+2016-02-09,21:27:20,C1,2015,146.33,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,21:29:47,C1,2015,145.72,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-09,21:32:14,C1,2015,145.94,Row(APPROXIMATE COUNT(DISTINCT subreddit)=202425),Spark10
+2016-02-10,00:22:31,5,2007,7.26,Null,Spark10
+2016-02-10,00:26:39,5,2007,2.33,Null,Spark10
+2016-02-10,00:26:41,6,2007,2.34,Null,Spark10
+2016-02-10,00:27:32,5,2009,15.18,Row(score=1008, parent_id=u't1_c0enp5o', subreddit=u'funny', score=2865, link_id=u't3_9vm8l'),Spark10
+2016-02-10,00:27:46,6,2009,12.59,Row(parent_id=u't3_9vm8l', score=1008, parent_id=u't1_c0enp5o', score=2865),Spark10
+2016-02-10,05:23:43,1,2017,336.05,Row(numPosts=1602440447),Spark10
+2016-02-10,05:29:21,1,2017,337.11,Row(numPosts=1602440447),Spark10
+2016-02-10,05:34:59,1,2017,336.44,Row(numPosts=1602440447),Spark10
+2016-02-10,05:40:37,1,2017,336.47,Row(numPosts=1602440447),Spark10
+2016-02-10,05:50:10,2,2017,571.13,Row(author=u'annonemp', avgScore=7744.0),Spark10
+2016-02-10,05:59:09,2,2017,537.89,Row(author=u'annonemp', avgScore=7744.0),Spark10
+2016-02-10,06:08:10,2,2017,538.78,Row(author=u'annonemp', avgScore=7744.0),Spark10
+2016-02-10,06:17:09,2,2017,537.69,Row(author=u'annonemp', avgScore=7744.0),Spark10
+2016-02-10,06:25:35,3,2017,504.05,Row(_c0=297772),Spark10
+2016-02-10,06:33:52,3,2017,496.37,Row(_c0=297772),Spark10
+2016-02-10,06:42:10,3,2017,496.52,Row(_c0=297772),Spark10
+2016-02-10,06:50:30,3,2017,499.03,Row(_c0=297772),Spark10
+2016-02-10,08:09:33,4,2017,4741.81,Row(author=u'LordLior', parent_id=u't3_2np694', score=4935, author=u'DO_U_EVN_SPAGHETTI', parent_id=u't1_cmfpwqm', subreddit=u'AskReddit', name=u't1_cmfsbrr', score=26143, link_id=u't3_2np694'),Spark10
+2016-02-10,11:56:49,4,2017,13633.88,Row(author=u'LordLior', parent_id=u't3_2np694', score=4935, author=u'DO_U_EVN_SPAGHETTI', parent_id=u't1_cmfpwqm', subreddit=u'AskReddit', name=u't1_cmfsbrr', score=26143, link_id=u't3_2np694'),Spark10
+2016-02-10,15:47:24,4,2017,13803.83,Row(author=u'LordLior', parent_id=u't3_2np694', score=4935, author=u'DO_U_EVN_SPAGHETTI', parent_id=u't1_cmfpwqm', subreddit=u'AskReddit', name=u't1_cmfsbrr', score=26143, link_id=u't3_2np694'),Spark10
