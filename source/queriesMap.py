@@ -1,3 +1,6 @@
+#Factored out from run_Spark.py
+#TODO: add import statements in other run_ files
+
 mapQuery = {
     1 : "SELECT count(1) AS numPosts from SparkTempTable",
     2 : "SELECT author, avg(score) as avgScore from SparkTempTable GROUP BY author ORDER BY avgScore DESC limit 10",
