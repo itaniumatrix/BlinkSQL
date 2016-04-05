@@ -1,17 +1,19 @@
+Notes for Reddit data ETL, import into Hive warehouse metadata
+
 hadoop s3n://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY@reddit-comments/2009/RC_2009-09 distcp hdfs:///data/
 
 
 <property>
   <name>fs.s3n.awsAccessKeyId</name>
-  <value>AKIAJPJEBL6BOU5NPQIQ</value>
+  <value>$$</value>
 </property>
 
 <property>
   <name>fs.s3n.awsSecretAccessKey</name>
-  <value>XvKEWW/Z6z4thytuKw2IXdxV1nIQSD17y1O+apkl</value>
+  <value>$$</value>
 </property>
 
-hadoop distcp -Dfs.s3n.awsAccessKeyId=$AWS_ACCESS_KEY_ID -Dfs.s3n.awsSecretAccessKey="XvKEWW/Z6z4thytuKw2IXdxV1nIQSD17y1O+apkl" s3n://reddit-comments/2008/RC_2008-01 hdfs:///data/RC_2008-01
+hadoop distcp -Dfs.s3n.awsAccessKeyId=$AWS_ACCESS_KEY_ID -Dfs.s3n.awsSecretAccessKey="$$" s3n://reddit-comments/2008/RC_2008-01 hdfs:///data/RC_2008-01
 
 
 $HADOOP_HOME/sbin/stop-dfs.sh
